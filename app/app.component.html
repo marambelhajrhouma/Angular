@@ -1,0 +1,17 @@
+<!-- app.component.html -->
+<h1>{{ title }} app is running</h1>
+<input type="text" [(ngModel)]="note" placeholder="Enter a note" />
+<button (click)="addNote()">Add Note</button>
+<button (click)="deleteNotes()">Delete Notes</button>
+<button (click)="toggleNotes()">Toggle Notes</button>
+
+<!-- Nouvel élément pour la chaîne de recherche -->
+<input type="text" [(ngModel)]="searchQuery" placeholder="Search notes" />
+<button (click)="filterNotes()">Filter Notes</button>
+
+<ul>
+  <li *ngFor="let note of notes; let i = index" class="note-item">
+    <span [style.color]="note.color" *ngIf="note.visible">{{ note.text }}</span>
+    <button class="deleteNote" (click)="deleteNote(i)">X</button>
+  </li>
+</ul>
