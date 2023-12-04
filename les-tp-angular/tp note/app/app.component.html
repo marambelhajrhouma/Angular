@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="display-4 text-info font-weight-bold" style="text-align: center">{{ title }} app is running</h1>
+  <input [(ngModel)]="note" class="form-control border-info" placeholder="Enter a note" />
+
+  <button class="btn btn-info" (click)="addNote()">Add note</button>
+  <button class="btn btn-warning" (click)="deleteAllNotes()">Delete All</button>
+
+  <ul class="list-group mt-3">
+    <li *ngFor="let note of notes; let i = index"
+        [class.text-primary]="i % 3 === 0"
+        [class.text-success]="i % 3 === 1"
+        [class.text-danger]="i % 3 === 2">
+      {{ note.text }}
+      <button class="btn btn-light btn-sm" (click)="deleteNote(i)">Delete</button>
+    </li>
+  </ul>
+</div>

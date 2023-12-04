@@ -1,0 +1,104 @@
+<!-- app.component.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Add your own styles here -->
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Employee Management</a>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="display-4 text-center mb-5">Employee Management</h1>
+
+        <!-- Employee Table -->
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>CIN</th>
+                    <th>Name</th>
+                    <th>Telephone</th>
+                    <th>Address</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employees">
+                    <td>{{ emp.id }}</td>
+                    <td>{{ emp.cin }}</td>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.telephone }}</td>
+                    <td>{{ emp.address }}</td>
+                    <td>{{ emp.salary }}</td>
+                    <td>
+                        <button class="btn btn-outline-primary" (click)="updateEmployee(emp)">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                        <button class="btn btn-outline-danger ml-2" (click)="deleteEmployee(emp.id)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Add New Employee Form -->
+        <h2 class="text-center mt-4">Add New Employee</h2>
+        <form #employeeForm (ngSubmit)="addEmployee()">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cin">CIN:</label>
+                    <input type="text" class="form-control" id="cin" name="cin" [(ngModel)]="newEmployee.cin" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newEmployee.name" required>
+                </div>
+                <!-- ... -->
+<div class="form-group col-md-6">
+    <label for="telephone">Telephone:</label>
+    <input type="text" class="form-control" id="telephone" name="telephone" [(ngModel)]="newEmployee.telephone" required>
+</div>
+<div class="form-group col-md-6">
+    <label for="address">Address:</label>
+    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="newEmployee.address" required>
+</div>
+<div class="form-group col-md-6">
+    <label for="salary">Salary:</label>
+    <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="newEmployee.salary" required>
+</div>
+<!-- ... -->
+
+                <!-- Add other input fields for telephone, address, salary, etc. -->
+
+            </div>
+            <button class="btn btn-success" type="submit">
+                <i class="fas fa-plus"></i> Add Employee
+            </button>
+        </form>
+    </div>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Add your own scripts here -->
+
+</body>
+
+</html>
