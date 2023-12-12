@@ -1,0 +1,37 @@
+<form *ngFor="#f" >
+  <div>
+    <label for="">id</label>
+    <input type="number" required ngModel ngModel="i" placeholder="enter id">
+  </div>
+  <div *ngIf="i.invalid && i.touched">
+    id invalid
+  </div>
+
+  <div>
+    <label for="">marque</label>
+    <input type="text" required ngModel ngModel="m" placeholder="enter marque">
+  </div>
+  <div *ngIf="m.invalid && id.touched">
+    marque invalid
+  </div>
+
+  <div>
+    <label for="">description</label>
+    <input type="text" required ngModel ngModel="d" placeholder="enter description">
+  </div>
+  <div *ngIf="d.invalid && d.touched">
+    description invalid
+  </div>
+
+  <div>
+    <label for="">date construction</label>
+    <input type="date" required ngModel ngModel="d" placeholder="enter date construction">
+  </div>
+  <div *ngIf="d.invalid && d.touched">
+    date construction invalid
+  </div>
+
+  <button type="submit" (click)="add()" disabled="f.invalid">Add</button> 
+  <button type="submit" (click)="delete()">delete</button>  
+  <button type="submit" (click)="edit()">edit</button>  
+</form>
