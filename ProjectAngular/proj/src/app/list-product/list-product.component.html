@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home </title>
+</head>
+<body>
+    
+    <div class="list-product">
+        
+        
+                <input type="text" placeholder="Search products" [(ngModel)]="searchTerm" />
+                <button (click)="searchProducts()">Search</button>
+           <div>
+            <p></p>
+           </div>
+                <button (click)="getAlertStock()" class="btn btn-danger">Get Alert Stock</button>
+                <h3>{{ alertStock }}</h3>
+            
+        
+        <div *ngFor="let p of listProducts" class="product-item">
+          <app-product [product]="p"
+                       (incrementEventLike)="incrementLike($event)"
+                       (deleteEvent)="deleteProduct($event)"
+                       [isEditing]="selectedProductId === p.id">
+          </app-product>
+        </div>
+
+       
+        
+      
+      </div>
+      
+
+</body>
+</html>
+
+

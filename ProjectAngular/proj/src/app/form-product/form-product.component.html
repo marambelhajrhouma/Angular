@@ -1,0 +1,52 @@
+<div class="form-product">
+    <!-- Template Driven form -->
+    <form #f="ngForm" class="product-form">
+      <div>
+        <label for="title">Title* :</label>
+        <input type="text" name="title" placeholder="Enter the product title" [(ngModel)]="product.title" required minlength="3"
+               #t="ngModel" class="form-control">
+        <div *ngIf="t.invalid && t.touched" class="error-message">
+          <div *ngIf="t.errors?.['required']">Title is a required field</div>
+          <div *ngIf="t.errors?.['minlength']">Title minlength is equal to 3</div>
+        </div>
+      </div>
+  
+      <!-- Quantity has min two numbers -->
+      <div>
+        <label for="quantity">Quantity* :</label>
+        <input type="number" name="quantity" placeholder="Enter the product quantity" [(ngModel)]="product.quantity" required
+               #q="ngModel" pattern="[0-9]+" class="form-control">
+        <div *ngIf="q.invalid && q.touched" class="error-message">
+          <div *ngIf="q.errors?.['required']">Quantity is a required field</div>
+          <div *ngIf="q.errors?.['pattern']">Please provide a valid quantity: must have two numbers</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="price">Price* :</label>
+        <input type="number" name="price" placeholder="Enter the product price" [(ngModel)]="product.price" required
+               #p="ngModel" pattern="[0-9]+" class="form-control">
+        <div *ngIf="p.invalid && p.touched" class="error-message">
+          <div *ngIf="p.errors?.['required']">Price is a required field</div>
+          <div *ngIf="p.errors?.['pattern']">Please provide a valid price: must have two numbers</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="image">Product Image:</label>
+        <input type="file" name="image" accept="image/*" (change)="onImageChange($event)" class="form-control">
+      </div>
+  
+      <div>
+        <p>
+
+
+            
+        </p>
+      </div>
+
+      <!-- Only works when all conditions are valid -->
+      <button [disabled]="f.invalid" (click)="save()" class="btn btn-success">Save</button>
+    </form>
+  </div>
+  

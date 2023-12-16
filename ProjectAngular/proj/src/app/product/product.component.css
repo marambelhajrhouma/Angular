@@ -1,0 +1,26 @@
+/* Add styles for product component buttons */
+button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  /* Adjust styles for edit mode buttons */
+  button.edit-buttons {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  button.edit-buttons:hover {
+    background-color: #218838;
+  }
+  
+  /* Additional styles as needed */
+  

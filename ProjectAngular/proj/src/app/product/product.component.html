@@ -1,0 +1,46 @@
+<h3>Product Details:</h3>
+
+<div *ngIf="product">
+  <div class="card" style="width: 18rem; max-height: 400px; overflow: hidden;">
+    <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.title }}" style="max-height: 200px; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">Title: {{isEditing ? editedProduct.title : product.title}}</h5>
+      <p class="card-text">Price:  {{isEditing ? editedProduct.price : product.price}}
+       Quantity: {{isEditing ? editedProduct.quantity : product.quantity}}</p>
+      <p class="card-text">Likes: {{ product.like }}</p>
+      <!-- Add more details as needed -->
+      <a [routerLink]="'/proj/home/' + product.id" class="btn btn-primary">details</a>
+
+    </div>
+  </div>
+</div>
+
+<div>
+    <p>
+
+    </p>
+<!-- Buttons and edit mode -->
+<button (click)="sendNotif()" class="btn btn-primary">Like</button>
+<button (click)="sendNotifDelete()" class="btn btn-danger">Delete</button>
+<button (click)="startEdit()" class="btn btn-success edit-buttons">Edit</button>
+</div>
+
+<!-- Conditionally based on edit mode -->
+<div *ngIf="isEditing">
+
+  <h3>Edit Product:</h3>
+  <label for="editedTitle">Title:</label>
+  <input id="editedTitle" type="text" [(ngModel)]="editedProduct.title" required>
+
+  <label for="editedPrice">Price:</label>
+  <input id="editedPrice" type="number" [(ngModel)]="editedProduct.price" required>
+
+  <label for="editedQuantity">Quantity:</label>
+  <input id="editedQuantity" type="number" [(ngModel)]="editedProduct.quantity" required>
+
+  <!-- Buttons conditionally based on edit mode -->
+  <button (click)="cancelEdit()" class="btn btn-secondary edit-buttons">Cancel</button>
+  <button (click)="saveEdit()" class="btn btn-success edit-buttons">Done</button>
+</div>
+
+
